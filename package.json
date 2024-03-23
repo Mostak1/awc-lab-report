@@ -16,6 +16,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "react-permission-role": "^2.0.0"
+        "react-permission-role": "^2.0.0",
+        "sweetalert2": "^11.10.7"
     }
 }
