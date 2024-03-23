@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     {{-- select2 cdn --}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    
+
 
     <link rel="stylesheet" href="{{ asset('assets/css/admin_style.css') }}">
     {{-- @vite(['resources/scss/home.scss']) --}}
@@ -85,7 +85,7 @@
     </script>
 
     <script>
-        // category , subcategory, topic auto complete code 
+        // category , subcategory, topic auto complete code
         $(document).ready(function() {
 
             //   alert('Please enter');
@@ -122,9 +122,9 @@
 
         // datatable for all tables common coad with ID
         $(document).ready(function() {
-            
+
             var table = $('#dataTable').DataTable();
-            
+
             new $.fn.dataTable.Buttons(table, {
                 buttons: [
                     'copy', 'excel', 'pdf', 'print'
@@ -133,7 +133,7 @@
             table.buttons().container().appendTo($('.tablebtn', table.table().container()));
             $('.tablebtn .dt-buttons').removeClass('flex-wrap');
             $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-info mx-auto');
-            
+
         });
             // datatable for all tables common coad with Class
 

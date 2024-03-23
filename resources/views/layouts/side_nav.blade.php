@@ -18,6 +18,16 @@
 
                 {{-- @endhasanyrole --}}
 
+
+                <div class="sb-sidenav-menu-heading clr">Report</div>
+                {{-- @dd($roles) --}}
+                {{-- @if ($user->can('users.index')) --}}
+                    <a class="nav-link" href="{{ url('patients') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        patients
+                    </a>
+                {{-- @endif
+
                 <div class="sb-sidenav-menu-heading clr">Report</div>
                 {{-- @dd($roles) --}}
                 {{-- @if ($user->can('users.index')) --}}
@@ -33,7 +43,7 @@
                         User Role Set
                     </a>
                 {{-- @endif
-               
+
                 @if ($user->can('roles.index')) --}}
                     <a class="nav-link" href="{{ url('roles') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -54,6 +64,6 @@
                 {{ Auth::user()->name }}
             @endif
         </div>
-        <div class=" clr">Copyright &copy; <a href="https://mostaksarker.com/" class="nav-link" target="_blank" rel="noopener noreferrer"> Green Kitchen 2023</a></div>
+        <div class=" clr">Copyright &copy; <a href="https://mostaksarker.com/" class="nav-link" target="_blank" rel="noopener noreferrer"> AWC Lab 2024</a></div>
     </nav>
 </div>

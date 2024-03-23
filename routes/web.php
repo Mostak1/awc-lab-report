@@ -11,6 +11,7 @@ use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OffOrderController;
 use App\Http\Controllers\OffOrderDetailsController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
@@ -51,8 +52,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/',function(){
         return view('dashboard');
     })->name('dashboard')->middleware('auth');
+
+    // patient route
+    Route::resource('patients', PatientController::class);
 });
-// auth and permissions both required 
+// auth and permissions both required
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
