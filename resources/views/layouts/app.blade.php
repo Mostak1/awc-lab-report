@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Green Kitchen') }}</title>
+        <title>{{ config('app.name', 'AWC Lab-Report') }}</title>
         <link rel="icon" href="{{ asset(config('app.logo_path')) }}" type="image/png">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

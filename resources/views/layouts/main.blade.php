@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>@yield('title', 'Green Kitchen Admin')</title>
+    <title>@yield('title', 'AWC Lab Report')</title>
     <link rel="icon" href="{{ asset(config('app.logo_path')) }}" type="image/png">
     {{-- CSRF --}}
     <meta name="csrf-token" content="<?php echo csrf_token(); ?>" id="token">
@@ -56,6 +56,8 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
+
+                        <div class="text-muted">Copyright &copy; AWC Lab-Report 2024</div>
                         {{-- <div class="text-muted">Copyright &copy; Test BD 2023</div>
                         <div>
                             <a href="#">Privacy Policy</a>

@@ -5,5 +5,14 @@
 
 .aw-bg{
     background-color: #cb5e5e;
-    
+
+  }
+
+
+  thead tr:nth-child(even) {
+    background-color: #f7ecec !important;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #D6EEEE !important;
   }

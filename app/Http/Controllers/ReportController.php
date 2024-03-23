@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -12,23 +13,48 @@ class ReportController extends Controller
      */
     public function index()
     {
-        //
+        $reports = Report::all();
+        return view('reports.index', compact('reports'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
-    {
-        //
-    }
+{
+    $patients = Patient::all();
+    return view('reports.create', compact('patients'));
+}
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'name' => 'required',
+            'field_01' => 'required|file|mimes:pdf,doc,docx',
+            'field_02' => 'required',
+        ]);
+
+        $report = new Report();
+        $report->patient_id = $request->patient_id;
+        $report->name = $request->name;
+
+        // Handle file upload
+        if ($request->hasFile('field_01')) {
+            $file = $request->file('field_01');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $fileName);
+            $report->field_01 = $fileName;
+        }
+
+        $report->field_02 = $request->field_02;
+        $report->save();
+
+        return redirect()->route('reports.index')->with('success', 'Report created successfully!');
     }
 
     /**
@@ -36,7 +62,7 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        //
+        return view('reports.show', compact('report'));
     }
 
     /**
@@ -44,7 +70,8 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        //
+        $patients = Patient::all();
+        return view('reports.edit', compact('report', 'patients'));
     }
 
     /**
@@ -52,7 +79,27 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+        $request->validate([
+            'patient_id' => 'required|exists:patients,id',
+            'name' => 'required',
+            'field_02' => 'required',
+        ]);
+
+        $report->patient_id = $request->patient_id;
+        $report->name = $request->name;
+
+        // Handle file upload
+        if ($request->hasFile('field_01')) {
+            $file = $request->file('field_01');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $fileName);
+            $report->field_01 = $fileName;
+        }
+
+        $report->field_02 = $request->field_02;
+        $report->save();
+
+        return redirect()->route('reports.index')->with('success', 'Report updated successfully!');
     }
 
     /**
@@ -60,6 +107,7 @@ class ReportController extends Controller
      */
     public function destroy(Report $report)
     {
-        //
+        $report->delete();
+        return redirect()->route('reports.index')->with('success', 'Report deleted successfully!');
     }
 }

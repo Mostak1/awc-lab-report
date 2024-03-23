@@ -15,6 +15,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\StaffController;
@@ -55,6 +56,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // patient route
     Route::resource('patients', PatientController::class);
+    Route::resource('reports', ReportController::class);
 });
 // auth and permissions both required
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

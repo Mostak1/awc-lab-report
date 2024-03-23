@@ -28,7 +28,7 @@ class PatientController extends Controller
 
         Patient::create($request->all());
 
-        return redirect()->route('patients.index');
+        return redirect()->route('patients.index')->with('success', 'Report created successfully!');
     }
 
     public function show(Patient $patient)
@@ -51,13 +51,13 @@ class PatientController extends Controller
 
         $patient->update($request->all());
 
-        return redirect()->route('patients.index');
+        return redirect()->route('patients.index')->with('success', 'Report updated successfully!');
     }
 
     public function destroy(Patient $patient)
     {
         $patient->delete();
-        return redirect()->route('patients.index');
+        return redirect()->route('patients.index')->with('success', 'Report deleted successfully!');
     }
 
 }

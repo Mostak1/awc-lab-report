@@ -9,11 +9,11 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                    <tr>
                         <tr>
                             <th colspan="6" class="tablebtn text-end">
                             </th>
                         </tr>
+                    <tr>
                         <th>#</th>
                         <th>Invoice ID</th>
                         <th>Name</th>
@@ -35,7 +35,7 @@
                                 <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this patient?')">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
                             </td>
                         </tr>

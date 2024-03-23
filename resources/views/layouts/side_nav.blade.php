@@ -23,8 +23,13 @@
                 {{-- @dd($roles) --}}
                 {{-- @if ($user->can('users.index')) --}}
                     <a class="nav-link" href="{{ url('patients') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-injured"></i></div>
                         patients
+                    </a>
+
+                    <a class="nav-link" href="{{ url('reports') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                        reports
                     </a>
                 {{-- @endif
 
@@ -64,6 +69,6 @@
                 {{ Auth::user()->name }}
             @endif
         </div>
-        <div class=" clr">Copyright &copy; <a href="https://mostaksarker.com/" class="nav-link" target="_blank" rel="noopener noreferrer"> AWC Lab 2024</a></div>
+        <div hidden class=" clr">Copyright &copy; <a href="https://mostaksarker.com/" class="nav-link" target="_blank" rel="noopener noreferrer"> AWC Lab 2024</a></div>
     </nav>
 </div>
