@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <div class="container">
-    <a href="{{ route('patients.index') }}" class="btn btn-primary mt-3">&larr;Back</a>
+    <a href="{{ route('patients.create-report', $patient->id) }}" class="btn btn-primary">Add Report</a>
     <div class="row mt-3">
             <h1><strong>{{ $patient->name }}'s Reports</strong></h1>
             <div class="row">
@@ -19,8 +19,9 @@
                 </div>
             </div>
                 @endforeach
-            </div>
+        </div>
     </div>
+    <a href="{{ route('patients.index') }}" class="btn btn-primary mt-3">&larr;Back</a>
 </div>
 @endsection
 

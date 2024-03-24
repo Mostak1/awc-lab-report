@@ -59,6 +59,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('reports', ReportController::class);
     Route::get('/patients/{patient}/reports', [PatientController::class, 'showReports'])->name('patients.reports');
 
+    Route::get('/patients/{patient}/create-report', [PatientController::class, 'createReport'])->name('patients.create-report');
+    Route::post('/patients/{patient}/store-report', [PatientController::class, 'storeReport'])->name('patients.store-report');
+
+
+
 
 });
 // auth and permissions both required

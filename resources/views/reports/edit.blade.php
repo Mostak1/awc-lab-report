@@ -22,7 +22,7 @@
                             <input type="text" name="name" id="name" class="form-control" value="{{ $report->name }}" required>
                         </div>
                         <div class="form-group">
-                            <label for="field_01">Upload File:</label>
+                            <label for="field_01">File: (Upload File: PDF, DOC, DOCX)</label>
                             <input type="file" name="field_01" id="field_01" class="form-control">
                         </div>
                         <div class="form-group">

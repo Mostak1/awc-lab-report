@@ -26,7 +26,7 @@
                                 <tr>
                                     <td>{{ $report->id }}</td>
                                     <td>{{ $report->name }}</td>
-                                    <td>{{ $report->patient->name }}</td>
+                                    <td>{{ $report->patient ? $report->patient->name : 'Unknown Patient' }}</td>
                                     <td><a href="{{ asset('uploads/' . $report->field_01) }}" target="_blank">Download File</a></td>
                                     <td>
                                         <a href="{{ route('reports.show', $report->id) }}" class="btn btn-info btn-sm">View</a>

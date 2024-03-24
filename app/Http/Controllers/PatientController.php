@@ -38,7 +38,7 @@ class PatientController extends Controller
 
         Patient::create($request->all());
 
-        return redirect()->route('patients.index')->with('success', 'Report created successfully!');
+        return redirect()->route('patients.index')->with('success', 'Patient created successfully!');
     }
 
     public function show(Patient $patient)
@@ -51,7 +51,7 @@ class PatientController extends Controller
             ->select('patients.id', DB::raw('count(reports.id) as reports_count'))
             ->groupBy('patients.id')
             ->pluck('reports_count', 'id');
-            
+
         return view('patients.show', compact('patient', 'reportsCount'));
     }
 
@@ -70,22 +70,54 @@ class PatientController extends Controller
 
         $patient->update($request->all());
 
-        return redirect()->route('patients.index')->with('success', 'Report updated successfully!');
+        return redirect()->route('patients.index')->with('success', 'Patient updated successfully!');
     }
 
     public function destroy(Patient $patient)
     {
         $patient->delete();
-        return redirect()->route('patients.index')->with('success', 'Report deleted successfully!');
+        return redirect()->route('patients.index')->with('success', 'Patient deleted successfully!');
     }
 
 
     public function showReports($patientId)
-{
+    {
     $patient = Patient::findOrFail($patientId);
     $reports = Report::where('patient_id', $patient->id)->get();
 
     return view('patients.reports', compact('patient', 'reports'));
-}
+    }
+
+    public function createReport(Patient $patient)
+    {
+        $patients = Patient::all(); // Fetch patients if needed
+        return view('patients.create-report', compact('patient', 'patients'));
+    }
+
+    public function storeReport(Request $request, Patient $patient)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'field_01' => 'required|mimes:pdf,doc,docx',
+            'field_02' => 'required|string',
+        ]);
+
+        // Handle file upload
+        if ($request->hasFile('field_01')) {
+            $file = $request->file('field_01');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $fileName);
+        }
+
+        // Store the filename in the database
+        $report = new Report();
+        $report->patient_id = $patient->id;
+        $report->name = $request->name;
+        $report->field_01 = $fileName; // Store only the file name
+        $report->field_02 = $request->field_02;
+        $report->save();
+
+        return redirect()->route('patients.reports', $patient->id)->with('success', 'Report created successfully.');
+    }
 
 }
