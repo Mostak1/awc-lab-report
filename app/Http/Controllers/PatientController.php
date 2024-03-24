@@ -3,14 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Report;
+use DB;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
     public function index()
     {
-        $patients = Patient::orderBy('created_at', 'desc')->get();
-        return view('patients.index', compact('patients'));
+        $patients = Patient::all();
+
+        // Fetch the count of reports for each patient
+        $reportsCount = DB::table('patients')
+            ->leftJoin('reports', 'patients.id', '=', 'reports.patient_id')
+            ->select('patients.id', DB::raw('count(reports.id) as reports_count'))
+            ->groupBy('patients.id')
+            ->pluck('reports_count', 'id');
+
+        return view('patients.index', compact('patients', 'reportsCount'));
     }
 
     public function create()
@@ -33,7 +43,16 @@ class PatientController extends Controller
 
     public function show(Patient $patient)
     {
-        return view('patients.show', compact('patient'));
+        $patients = Patient::all();
+
+        // Fetch the count of reports for each patient
+        $reportsCount = DB::table('patients')
+            ->leftJoin('reports', 'patients.id', '=', 'reports.patient_id')
+            ->select('patients.id', DB::raw('count(reports.id) as reports_count'))
+            ->groupBy('patients.id')
+            ->pluck('reports_count', 'id');
+            
+        return view('patients.show', compact('patient', 'reportsCount'));
     }
 
     public function edit(Patient $patient)
@@ -59,5 +78,14 @@ class PatientController extends Controller
         $patient->delete();
         return redirect()->route('patients.index')->with('success', 'Report deleted successfully!');
     }
+
+
+    public function showReports($patientId)
+{
+    $patient = Patient::findOrFail($patientId);
+    $reports = Report::where('patient_id', $patient->id)->get();
+
+    return view('patients.reports', compact('patient', 'reports'));
+}
 
 }

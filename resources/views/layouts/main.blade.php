@@ -153,6 +153,9 @@
             $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-info mx-auto');
 
         });
+
+
+
     </script>
     <!-- dynamic content start-->
     @yield('script')

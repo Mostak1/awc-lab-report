@@ -10,7 +10,7 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="patient_id">Patient:</label>
-                            <select name="patient_id" id="patient_id" class="form-control" required>
+                            <select name="patient_id" id="patient_id" class="form-control select2" required>
                                 <option value="">Select Patient</option>
                                 @foreach ($patients as $patient)
                                     <option value="{{ $patient->id }}" @if ($report->patient_id == $patient->id) selected @endif>{{ $patient->name }}</option>
@@ -38,4 +38,10 @@
 @endsection
 
 @section('script')
+
+<script>
+    $(document).ready(function() {
+        $('.select2').select2(); // Initialize Select2
+    });
+</script>
 @endsection

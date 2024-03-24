@@ -24,12 +24,12 @@
                 {{-- @if ($user->can('users.index')) --}}
                     <a class="nav-link" href="{{ url('patients') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-user-injured"></i></div>
-                        patients
+                        Patients
                     </a>
 
                     <a class="nav-link" href="{{ url('reports') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
-                        reports
+                        Reports
                     </a>
                 {{-- @endif
 

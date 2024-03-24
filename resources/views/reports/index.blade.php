@@ -15,10 +15,9 @@
                                 </tr>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
+                                <th>Report's Name</th>
                                 <th>Patient</th>
                                 <th>Report</th>
-                                <th>Notes</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -29,7 +28,6 @@
                                     <td>{{ $report->name }}</td>
                                     <td>{{ $report->patient->name }}</td>
                                     <td><a href="{{ asset('uploads/' . $report->field_01) }}" target="_blank">Download File</a></td>
-                                    <td>{{ $report->field_02 }}</td>
                                     <td>
                                         <a href="{{ route('reports.show', $report->id) }}" class="btn btn-info btn-sm">View</a>
                                         <a href="{{ route('reports.edit', $report->id) }}" class="btn btn-primary btn-sm">Edit</a>

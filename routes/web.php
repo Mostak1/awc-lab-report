@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth']], function() {
     // patient route
     Route::resource('patients', PatientController::class);
     Route::resource('reports', ReportController::class);
+    Route::get('/patients/{patient}/reports', [PatientController::class, 'showReports'])->name('patients.reports');
+
+
 });
 // auth and permissions both required
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

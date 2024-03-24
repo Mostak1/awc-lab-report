@@ -16,7 +16,7 @@
                     <tr>
                         <th>#</th>
                         <th>Invoice ID</th>
-                        <th>Name</th>
+                        <th>Patient's Name</th>
                         <th>Age</th>
                         <th>Actions</th>
                     </tr>
@@ -32,6 +32,7 @@
                             <td>
                                 <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm">View</a>
                                 <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                <a href="{{ route('patients.reports', $patient->id) }}" class="btn btn-success btn-sm">View Reports ({{ $reportsCount[$patient->id] ?? 0 }})</a>
                                 <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
