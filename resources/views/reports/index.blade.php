@@ -3,16 +3,15 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Reports</h1>
-            <a href="{{ route('reports.create') }}" class="btn btn-primary mb-3">Add</a>
+            <h1>Reports <a href="{{ route('reports.create') }}" class="btn btn-primary">Add</a></h1>
+
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                                <tr>
-                                    <th colspan="7" class="tablebtn text-end">
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th colspan="7" class="tablebtn text-end"></th>
+                            </tr>
                             <tr>
                                 <th>#</th>
                                 <th>Report's Name</th>
@@ -40,7 +39,7 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                      </table>
                     </div>
                 </div>
         </div>

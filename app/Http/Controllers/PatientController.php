@@ -11,7 +11,7 @@ class PatientController extends Controller
 {
     public function index()
     {
-        $patients = Patient::all();
+        $patients = Patient::orderBy('id', 'desc')->get();
 
         // Fetch the count of reports for each patient
         $reportsCount = DB::table('patients')
@@ -29,17 +29,23 @@ class PatientController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'invoice_id' => 'required|unique:patients',
-            'name' => 'required',
-            'age' => 'required|integer',
-        ]);
+{
+    $request->validate([
+        'invoice_id' => 'required|unique:patients',
+        'name' => 'required',
+        'age' => 'required|integer',
+    ]);
 
-        Patient::create($request->all());
+    $patient = Patient::create($request->all());
 
-        return redirect()->route('patients.index')->with('success', 'Patient created successfully!');
+    if ($request->has('add_report')) {
+        // If the checkbox "Add Report" is checked, redirect to the report creation page
+        return redirect()->route('patients.create-report', ['patient' => $patient->id]);
     }
+
+    return redirect()->route('patients.index')->with('success', 'Patient created successfully!');
+}
+
 
     public function show(Patient $patient)
     {

@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h1>Add Report for {{ $patient->name }}</h1>
-                <a href="{{ route('patients.reports', $patient->id) }}" class="btn btn-primary mt-3">&larr;Back</a>
+            <h1><a href="{{ route('patients.reports', $patient->id) }}" class="btn btn-primary">&larr;Back</a> Add Report for {{ $patient->name }}</h1>
+
                 <div class="card-body">
                     <form action="{{ route('patients.store-report', $patient->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf

@@ -125,6 +125,8 @@
         // datatable for all tables common coad with ID
         $(document).ready(function() {
 
+            $('#dataTable').DataTable({"order": [[ 0, 'desc' ]]});
+
             var table = $('#dataTable').DataTable();
 
             new $.fn.dataTable.Buttons(table, {
@@ -151,7 +153,6 @@
             table.buttons().container().appendTo($('.tablebtn', table.table().container()));
             $('.tablebtn .dt-buttons').removeClass('flex-wrap');
             $('.tablebtn .btn').removeClass('btn-secondary').addClass('btn-outline-info mx-auto');
-
         });
 
 

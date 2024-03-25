@@ -6,7 +6,8 @@
             <div class="card mt-2">
                 <div class="card-header h2 text-center">{{ $report->name }}</div>
                 <div class="card-body">
-                    <p><strong>Patient:</strong> {{ optional($report->patient)->name }}</p>
+                    <p><strong>Invoice ID:</strong> {{($report->patient)->invoice_id }}</p>
+                    <p><strong>Patient:</strong> {{ ($report->patient)->name }}</p>
                     <p><strong>Report:</strong> <a href="{{ asset('uploads/' . $report->field_01) }}" target="_blank">Download File</a></p>
                     <p><strong>Notes:</strong> {{ $report->field_02 }}</p>
                     <p><strong>Created At:</strong> {{ $report->created_at->format('M d, Y h:i A') }}</p>

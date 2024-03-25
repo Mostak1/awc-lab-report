@@ -65,7 +65,9 @@
         });
     </script>
 @endif
-@if(Session::get('success', false))
+
+
+{{-- @if(Session::get('success', false))
     <?php $data = Session::get('success'); ?>
     @if (is_array($data))
         @foreach ($data as $msg)
@@ -80,4 +82,4 @@
             {{ $data }}
         </div>
     @endif
-@endif
+@endif --}}

@@ -13,7 +13,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
+        $reports = Report::orderBy('id', 'desc')->get();
         return view('reports.index', compact('reports'));
     }
 
