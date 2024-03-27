@@ -30,10 +30,10 @@
                                     <td>
                                         <a href="{{ route('reports.show', $report->id) }}" class="btn btn-info btn-sm">View</a>
                                         <a href="{{ route('reports.edit', $report->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        <form action="{{ route('reports.destroy', $report->id) }}" method="POST" style="display: inline-block;">
+                                        <form id="deleteReportForm" action="{{ route('reports.destroy', $report->id) }}" method="POST" style="display: inline-block;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDeleteReport()">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -48,4 +48,14 @@
 @endsection
 
 @section('script')
+
+<script>
+    function confirmDeleteReport() {
+        // Display a confirmation dialog
+        var confirmation = confirm("Are you sure you want to delete this report?");
+
+        // If the user confirms deletion, submit the form
+        return confirmation;
+    }
+</script>
 @endsection

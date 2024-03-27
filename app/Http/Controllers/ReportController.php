@@ -36,7 +36,7 @@ class ReportController extends Controller
             'patient_id' => 'required|exists:patients,id',
             'name' => 'required',
             'field_01' => 'required|file|mimes:pdf,doc,docx',
-            'field_02' => 'required',
+            'field_02' => 'nullable',
         ]);
 
         $report = new Report();
@@ -82,7 +82,7 @@ class ReportController extends Controller
         $request->validate([
             'patient_id' => 'required|exists:patients,id',
             'name' => 'required',
-            'field_02' => 'required',
+            'field_02' => 'nullable',
         ]);
 
         $report->patient_id = $request->patient_id;

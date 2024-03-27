@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h1>Patients <a href="{{ route('patients.create') }}" class="btn btn-primary text-end">Add</a></h1>
-            
+
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -31,10 +31,10 @@
                                 <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm">View</a>
                                 <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                 <a href="{{ route('patients.reports', $patient->id) }}" class="btn btn-success btn-sm">View Reports ({{ $reportsCount[$patient->id] ?? 0 }})</a>
-                                <form action="{{ route('patients.destroy', $patient->id) }}" method="POST" class="d-inline">
+                                <form id="deleteForm" action="{{ route('patients.destroy', $patient->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmDelete()">Delete</button>
                                 </form>
                             </td>
                         </tr>
@@ -49,5 +49,15 @@
 @endsection
 
 @section('script')
+
+<script>
+    function confirmDelete() {
+        // Display a confirmation dialog
+        var confirmation = confirm("Are you sure you want to delete this patient?");
+
+        // If the user confirms deletion, submit the form
+        return confirmation;
+    }
+</script>
 
 @endsection

@@ -105,7 +105,7 @@ class PatientController extends Controller
         $request->validate([
             'name' => 'required|string',
             'field_01' => 'required|mimes:pdf,doc,docx',
-            'field_02' => 'required|string',
+            'field_02' => 'nullable|string',
         ]);
 
         // Handle file upload

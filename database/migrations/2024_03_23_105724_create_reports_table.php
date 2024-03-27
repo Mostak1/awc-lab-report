@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('patient_id')->references('id')->on('patients')->onDelete("cascade");
             $table->text('name');
             $table->text('field_01');
-            $table->text('field_02');
+            $table->text('field_02')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
