@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Patients <a href="{{ route('patients.create') }}" class="btn btn-primary text-end">Add</a></h1>
+            <h3>Patients <a href="{{ route('patients.create') }}" class="btn btn-primary text-end">&plus; Add</a></h3>
 
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

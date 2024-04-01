@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Reports <a href="{{ route('reports.create') }}" class="btn btn-primary">Add</a></h1>
+            <h3>Reports <a href="{{ route('reports.create') }}" class="btn btn-primary">&plus; Add</a></h3>
 
                 <div class="card-body">
                     <div class="table-responsive">

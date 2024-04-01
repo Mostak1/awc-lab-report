@@ -3,8 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h1><a href="{{ route('patients.index') }}" class="btn btn-primary">&larr; Back</a> Add New Patient</h1>
+        <div class="col-md-6 bg-white rounded shadow-sm">
+            <h3 class="bg-light py-2 mt-2 mt-2"><a href="{{ route('patients.index') }}" class="btn btn-primary">&larr; Back</a> Add New Patient</h3>
 
             <form action="{{ route('patients.store') }}" method="POST">
                 @csrf
@@ -26,7 +26,7 @@
                         Add Report
                     </label>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                <button type="submit" class="btn btn-primary my-2">Submit</button>
             </form>
         </div>
     </div>

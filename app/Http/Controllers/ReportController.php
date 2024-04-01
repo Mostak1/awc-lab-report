@@ -22,10 +22,10 @@ class ReportController extends Controller
      */
 
     public function create()
-{
-    $patients = Patient::all();
-    return view('reports.create', compact('patients'));
-}
+    {
+        $patients = Patient::all();
+        return view('reports.create', compact('patients'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -110,4 +110,21 @@ class ReportController extends Controller
         $report->delete();
         return redirect()->route('reports.index')->with('success', 'Report deleted successfully!');
     }
+
+
+    public function uploadImage(Request $request)
+    {
+        // Handle file upload
+        if ($request->hasFile('upload')) {
+            $image = $request->file('upload');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+        }
+
+        return response()->json([
+            'uploaded' => true,
+            'url' => asset('uploads/' . $imageName)
+        ]);
+    }
+
 }

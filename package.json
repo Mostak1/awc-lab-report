@@ -16,7 +16,14 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@lexical/react": "^0.14.2",
+        "@lexical/yjs": "^0.14.2",
+        "@liveblocks/client": "^1.11.0",
+        "@liveblocks/react": "^1.11.0",
+        "@liveblocks/yjs": "^1.11.0",
+        "lexical": "^0.14.2",
         "react-permission-role": "^2.0.0",
-        "sweetalert2": "^11.10.7"
+        "sweetalert2": "^11.10.7",
+        "yjs": "^13.6.14"
     }
 }

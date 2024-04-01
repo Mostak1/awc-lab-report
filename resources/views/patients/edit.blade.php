@@ -2,8 +2,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h1><a href="{{ route('patients.index') }}" class="btn btn-primary">&larr;Back</a> Edit Patient</h1>
+        <div class="col-md-6 bg-white rounded shadow-sm">
+            <h3 class="bg-light py-2 mt-2"><a href="{{ route('patients.index') }}" class="btn btn-primary">&larr;Back</a> Edit Patient</h3>
 
             <form action="{{ route('patients.update', $patient->id) }}" method="POST">
                 @csrf
@@ -20,7 +20,7 @@
                     <label for="age">Age:</label>
                     <input type="number" name="age" id="age" class="form-control" value="{{ $patient->age }}" required>
                 </div>
-                <button type="submit" class="btn btn-primary mt-2">Update</button>
+                <button type="submit" class="btn btn-primary my-2">Update</button>
             </form>
         </div>
     </div>

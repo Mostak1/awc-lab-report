@@ -3,8 +3,8 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h1><a href="{{ route('patients.reports', $patient->id) }}" class="btn btn-primary">&larr;Back</a> Add Report for {{ $patient->name }}</h1>
+        <div class="col-md-6 bg-white rounded shadow-sm">
+            <h3 class="bg-light py-2 mt-2"><a href="{{ route('patients.reports', $patient->id) }}" class="btn btn-primary">&larr;Back</a> Add Report for {{ $patient->name }}</h3>
 
                 <div class="card-body">
                     <form action="{{ route('patients.store-report', $patient->id) }}" method="POST" enctype="multipart/form-data">
@@ -21,7 +21,7 @@
                             <label for="field_02" class="form-label">Notes: (Optional)</label>
                             <textarea class="form-control" id="field_02" name="field_02" rows="3" value="{{ old('field_02') }}"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary my-2`">Submit</button>
                     </form>
                 </div>
         </div>
@@ -30,4 +30,20 @@
 @endsection
 
 @section('script')
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#field_02'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', 'undo', 'redo'],
+            ckfinder: {
+                uploadUrl: '{{ route("upload_image") }}'
+            }
+        })
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
 @endsection

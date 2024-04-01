@@ -2,8 +2,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h1>Patient Details</h1>
+        <div class="col-md-6 bg-white rounded shadow-sm">
+            <h3 class="bg-light py-2 mt-2">Patient Details</h3>
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><strong>Invoice ID:</strong> {{ $patient->invoice_id }}</h5>
@@ -14,7 +14,7 @@
                     <p class="card-text"><strong>Last Updated:</strong> {{ $patient->updated_at->format('M d, Y h:i A') }}</p>
                 </div>
             </div>
-            <a href="{{ route('patients.index') }}" class="btn btn-primary mt-3">&larr;Back</a>
+            <a href="{{ route('patients.index') }}" class="btn btn-primary my-3">&larr;Back</a>
         </div>
     </div>
 </div>

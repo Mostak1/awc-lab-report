@@ -54,9 +54,11 @@ Route::group(['middleware' => ['auth']], function() {
         return view('dashboard');
     })->name('dashboard')->middleware('auth');
 
-    // patient route
+    // patient report route
     Route::resource('patients', PatientController::class);
     Route::resource('reports', ReportController::class);
+    Route::post('/upload_image', [ReportController::class, 'uploadImage'])->name('upload_image');
+
     Route::get('/patients/{patient}/reports', [PatientController::class, 'showReports'])->name('patients.reports');
 
     Route::get('/patients/{patient}/create-report', [PatientController::class, 'createReport'])->name('patients.create-report');
